@@ -124,8 +124,9 @@ if (!file.exists(&quot;activity.csv&quot;)){
         unzip(&quot;activity.zip&quot;)
 }
 #read the data
-activity &lt;- read.csv(&quot;activity.csv&quot;, colClasses = c(&quot;integer&quot;, &quot;character&quot;, &quot;integer&quot;))
-#convert the date column to date class.
+activity &lt;- read.csv(&quot;activity.csv&quot;, colClasses = c(&quot;integer&quot;, &quot;character&quot;, &quot;integer&quot;))</code></pre>
+<p>To prepare the data, two columns are added. One to show which day of the week each date is and another for wheter a day in a weekday or weekend.</p>
+<pre class="r"><code>#convert the date column to date class.
 activity$date &lt;- as.Date(activity$date, &quot;%Y-%m-%d&quot;)
 library(data.table)
 #convert to data table for simplicity and speed

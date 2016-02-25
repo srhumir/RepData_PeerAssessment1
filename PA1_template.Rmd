@@ -17,6 +17,9 @@ if (!file.exists("activity.csv")){
 }
 #read the data
 activity <- read.csv("activity.csv", colClasses = c("integer", "character", "integer"))
+```
+To prepare the data, two columns are added. One to show which day of the week each date is and another for wheter a day in a weekday or weekend.
+```{r}
 #convert the date column to date class.
 activity$date <- as.Date(activity$date, "%Y-%m-%d")
 library(data.table)

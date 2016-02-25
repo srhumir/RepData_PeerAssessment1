@@ -13,6 +13,10 @@ if (!file.exists("activity.csv")){
 }
 #read the data
 activity <- read.csv("activity.csv", colClasses = c("integer", "character", "integer"))
+```
+To prepare the data, two columns are added. One to show which day of the week each date is and another for wheter a day in a weekday or weekend.
+
+```r
 #convert the date column to date class.
 activity$date <- as.Date(activity$date, "%Y-%m-%d")
 library(data.table)
@@ -40,7 +44,7 @@ title(main = "Total steps per day", sub = paste("Mean = ",                      
                                               xlab = "Total steps per day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)
 
 
 ## What is the average daily activity pattern?
@@ -57,7 +61,7 @@ plot(b$interval, b$meanstepsinterval, type = "l" ,
      xlab = "Interval", ylab = "Number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)
 
 ```r
 #The interval wiht the maximun averge steps
@@ -91,7 +95,7 @@ Filling the no values and reploting the histogram, it can be seen that the frequ
 activityfull <- fillNA(activity)
 ```
 Below is the histogram with filled no values. I ommited the code from the output as it is exatly the same as the previous histogram.
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -108,7 +112,7 @@ qplot(interval, meansteps, data = b, facets = wDay~., geom = "line",
       ylab = "Number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)
 
 ##Question
 Why 2355 intervals? There are just 288 five-minute in 24 hours.
