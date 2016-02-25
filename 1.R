@@ -62,7 +62,7 @@ title(main = "Total steps per day", sub = paste("Mean = ",
       xlab = "Total steps per day")
 print("histogram is slightly different and mean and median very different")
 
-#
+#Are there differences in activity patterns between weekdays and weekends?
 b <- activityfull %>% group_by(interval, wDay) %>% 
         summarise(meansteps = mean(steps, na.rm = T))
 qplot(interval, meansteps, data = b, facets = wDay~., geom = "line",
